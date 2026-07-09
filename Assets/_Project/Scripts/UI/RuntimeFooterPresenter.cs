@@ -29,7 +29,7 @@ namespace WebGLPlayground.UI
             rectTransform.sizeDelta = new Vector2(-48, 26);
 
             TextMeshProUGUI text = footer.GetComponent<TextMeshProUGUI>();
-            text.text = $"Unity {Application.unityVersion}  |  WebGL 2.0  |  Browser Integration Lab  |  v0.2";
+            text.text = $"Unity {Application.unityVersion}  |  WebGL 2.0  |  Browser Integration Lab  |  v1.0";
             text.fontSize = 16;
             text.enableAutoSizing = false;
             text.textWrappingMode = TextWrappingModes.NoWrap;
