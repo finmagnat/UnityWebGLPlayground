@@ -151,5 +151,23 @@ mergeInto(LibraryManager.library, {
         stringToUTF8(value, pointer, byteCount);
 
         return pointer;
+    },
+
+    WGL_IsBrowserConnected: function () {
+        return typeof window !== "undefined" && typeof document !== "undefined" ? 1 : 0;
+    },
+
+    WGL_IsClipboardApiAvailable: function () {
+        return navigator.clipboard && navigator.clipboard.writeText ? 1 : 0;
+    },
+
+    WGL_IsFullscreenApiAvailable: function () {
+        const canvas = document.querySelector("#unity-canvas");
+
+        if (!canvas) {
+            return 0;
+        }
+
+        return canvas.requestFullscreen || canvas.webkitRequestFullscreen ? 1 : 0;
     }
 });

@@ -1,5 +1,6 @@
 using WebGLPlayground.Core;
 using UnityEngine;
+using WebGLPlayground.UI;
 using WebGLPlayground.WebGL;
 
 namespace WebGLPlayground.DemoModules
@@ -7,6 +8,12 @@ namespace WebGLPlayground.DemoModules
     public sealed class WebGLPlaygroundController : MonoBehaviour
     {
         [SerializeField] private PlaygroundLogger logger;
+
+        private void Awake()
+        {
+            RuntimeStatusPresenter.Refresh();
+            RuntimeFooterPresenter.Ensure();
+        }
 
         public void OpenUrl()
         {
@@ -30,7 +37,7 @@ namespace WebGLPlayground.DemoModules
 
         public void ShowBrowserInfo()
         {
-            logger.Log(BrowserDiagnosticsModule.BuildReport());
+            BrowserDiagnosticsWindow.Show(BrowserDiagnosticsModule.BuildData());
         }
         
         public void JSCall()

@@ -2,6 +2,14 @@
 
 A compact Unity 6 WebGL portfolio project that demonstrates practical browser integration from a Unity scene. The lab focuses on simple, reliable examples that are easy to explain, test, and extend.
 
+## Demo Preview
+
+_Screenshot/GIF will be added after the UI polish pass._
+
+## Why This Project Exists
+
+This repository demonstrates practical browser integration techniques for Unity WebGL: C# to JavaScript calls, JavaScript callbacks into Unity, browser capability checks, WebGL diagnostics, persistent browser-backed storage, fullscreen, clipboard, and file download workflows.
+
 ## Features
 
 - Open an external URL from Unity.

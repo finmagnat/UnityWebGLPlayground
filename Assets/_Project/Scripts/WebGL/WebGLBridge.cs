@@ -32,6 +32,15 @@ namespace WebGLPlayground.WebGL
 
         [DllImport("__Internal")]
         private static extern string WGL_GetGpuInfo();
+
+        [DllImport("__Internal")]
+        private static extern int WGL_IsBrowserConnected();
+
+        [DllImport("__Internal")]
+        private static extern int WGL_IsClipboardApiAvailable();
+
+        [DllImport("__Internal")]
+        private static extern int WGL_IsFullscreenApiAvailable();
 #endif
 
         public static void ShowAlert()
@@ -113,6 +122,42 @@ namespace WebGLPlayground.WebGL
             return WGL_GetGpuInfo();
 #else
             return SystemInfo.graphicsDeviceName;
+#endif
+        }
+
+        public static bool IsBridgeReady()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return true;
+#else
+            return false;
+#endif
+        }
+
+        public static bool IsBrowserConnected()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return WGL_IsBrowserConnected() != 0;
+#else
+            return false;
+#endif
+        }
+
+        public static bool IsClipboardApiAvailable()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return WGL_IsClipboardApiAvailable() != 0;
+#else
+            return false;
+#endif
+        }
+
+        public static bool IsFullscreenApiAvailable()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return WGL_IsFullscreenApiAvailable() != 0;
+#else
+            return false;
 #endif
         }
     }
