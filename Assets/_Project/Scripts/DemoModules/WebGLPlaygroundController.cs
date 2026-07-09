@@ -30,9 +30,7 @@ namespace WebGLPlayground.DemoModules
 
         public void ShowBrowserInfo()
         {
-            logger.Log($"Platform: {Application.platform}");
-            logger.Log($"Unity version: {Application.unityVersion}");
-            logger.Log($"System language: {Application.systemLanguage}");
+            logger.Log(BrowserDiagnosticsModule.BuildReport());
         }
         
         public void JSCall()

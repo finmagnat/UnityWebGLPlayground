@@ -20,6 +20,18 @@ namespace WebGLPlayground.WebGL
         
         [DllImport("__Internal")]
         private static extern void WGL_DownloadTextFile(string fileName, string content);
+
+        [DllImport("__Internal")]
+        private static extern string WGL_GetDevicePixelRatio();
+
+        [DllImport("__Internal")]
+        private static extern string WGL_GetUserAgent();
+
+        [DllImport("__Internal")]
+        private static extern string WGL_GetWebGLVersion();
+
+        [DllImport("__Internal")]
+        private static extern string WGL_GetGpuInfo();
 #endif
 
         public static void ShowAlert()
@@ -65,6 +77,42 @@ namespace WebGLPlayground.WebGL
             WGL_DownloadTextFile(fileName, content);
 #else
             Debug.Log($"[WebGLBridge] Download simulated in Editor: {fileName}\n{content}");
+#endif
+        }
+
+        public static string GetDevicePixelRatio()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return WGL_GetDevicePixelRatio();
+#else
+            return "Editor preview";
+#endif
+        }
+
+        public static string GetUserAgent()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return WGL_GetUserAgent();
+#else
+            return "Unity Editor";
+#endif
+        }
+
+        public static string GetWebGLVersion()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return WGL_GetWebGLVersion();
+#else
+            return "Editor preview";
+#endif
+        }
+
+        public static string GetGpuInfo()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            return WGL_GetGpuInfo();
+#else
+            return SystemInfo.graphicsDeviceName;
 #endif
         }
     }
