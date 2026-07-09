@@ -1,57 +1,91 @@
 # Unity WebGL Browser Integration Lab
 
-A compact Unity 6 WebGL portfolio project that demonstrates practical browser integration from a Unity scene. The lab focuses on simple, reliable examples that are easy to explain, test, and extend.
+A compact Unity 6.3 WebGL portfolio project focused on practical browser integration from Unity. It demonstrates how a WebGL build talks to JavaScript, uses browser APIs safely, and presents runtime diagnostics in a clean developer-tool interface.
 
-## Demo Preview
+![Unity WebGL Browser Integration Lab demo](docs/images/UnityWebGL_v1.0.gif)
 
-_Screenshot/GIF will be added after the UI polish pass._
+## Live Demo
 
-## Why This Project Exists
-
-This repository demonstrates practical browser integration techniques for Unity WebGL: C# to JavaScript calls, JavaScript callbacks into Unity, browser capability checks, WebGL diagnostics, persistent browser-backed storage, fullscreen, clipboard, and file download workflows.
+Coming soon (GitHub Pages)
 
 ## Features
 
-- Open an external URL from Unity.
-- Copy text to the browser clipboard through a WebGL `.jslib` bridge.
-- Toggle fullscreen through the browser Fullscreen API.
-- Save and load data with `PlayerPrefs`.
-- Call JavaScript alerts from C#.
-- Send JavaScript callbacks back into Unity with `SendMessage`.
-- Display Unity, browser, screen, WebGL, and GPU diagnostics.
-- Download a generated text file through the Browser API.
+- Unity <-> JavaScript Bridge
+- Clipboard API
+- Fullscreen API
+- Browser Diagnostics
+- Runtime Status Indicators
+- PlayerPrefs
+- Download File
+- Responsive UI
+- WebGL Interview Notes
 
-## Technical Highlights
+## Tech Stack
 
-- Unity C# to JavaScript interop through `DllImport("__Internal")`.
-- WebGL plugin located at `Assets/Plugins/WebGL/WebGLPlugin.jslib`.
-- JavaScript strings returned to C# with the `lengthBytesUTF8`, `stringToUTF8`, and `_malloc` pattern.
-- Small demo modules under `Assets/_Project/Scripts`.
-- No external packages or asynchronous infrastructure beyond browser APIs already required by the platform.
+- Unity 6.3 LTS
+- C#
+- WebGL 2.0
+- JavaScript (.jslib)
+- Browser APIs
+- TextMeshPro
+- Unity UI
 
-## WebGL Concepts Demonstrated
+## Screenshots
 
-- Browser sandbox constraints for Unity WebGL builds.
-- Calling browser APIs from Unity.
-- User gesture requirements for clipboard and fullscreen actions.
-- Blob-based file downloads with a temporary `<a download>` element.
-- JavaScript-to-Unity callbacks through `SendMessage`.
-- `PlayerPrefs` persistence in WebGL through browser storage.
-- Browser diagnostics through JavaScript and WebGL context queries.
+### Home Screen
+
+![Home Screen](docs/images/HomeScreen.jpg)
+
+### Browser Diagnostics
+
+![Browser Diagnostics](docs/images/BrowserDiagnostics.jpg)
+
+### Runtime Console
+
+![Runtime Console](docs/images/RuntimeConsole.jpg)
+
+## Project Structure
+
+- `Assets/_Project/Scenes/` - main WebGL playground scene.
+- `Assets/_Project/Scripts/Core/` - shared project-level code.
+- `Assets/_Project/Scripts/DemoModules/` - small browser integration demo modules.
+- `Assets/_Project/Scripts/UI/` - runtime UI, status, logger, and diagnostics presentation.
+- `Assets/_Project/Scripts/WebGL/` - C# WebGL bridge wrappers.
+- `Assets/Plugins/WebGL/` - Unity WebGL `.jslib` plugin functions.
+- `docs/` - interview notes and release images.
+
+## Why This Project Exists
+
+This laboratory was created to:
+
+- learn Unity WebGL deeply;
+- demonstrate practical browser integration techniques;
+- serve as a reusable reference project for future WebGL work.
+
+## Current Release
+
+| Item | Value |
+|------|-------|
+| Version | v1.0 |
+| Status | Stable |
+| Unity | 6.3 LTS |
+| Platform | WebGL 2.0 |
+
+Release notes: see [CHANGELOG.md](CHANGELOG.md).
 
 ## How To Build And Run
 
-1. Open the project in Unity 6.
+1. Open the project in Unity 6.3 LTS.
 2. Open `Assets/_Project/Scenes/WebGLPlayground.unity`.
-3. Switch platform to WebGL in Build Settings.
+3. Switch the build target to WebGL.
 4. Build the project.
 5. Run the build from a local web server, not directly from `file://`.
 
 Unity's Build And Run option is usually the fastest way to test locally. For an existing build folder, use any simple static server from the build output directory.
 
-## Compression Notes
+## WebGL Build Notes
 
-Unity WebGL builds often use Brotli (`.br`) or Gzip (`.gz`) compression. A local or production server must send the correct `Content-Encoding` headers for compressed files:
+Unity WebGL builds often use Brotli (`.br`) or Gzip (`.gz`) compression. Local and production servers must send the correct `Content-Encoding` headers for compressed files:
 
 - `.br` files need `Content-Encoding: br`.
 - `.gz` files need `Content-Encoding: gzip`.
@@ -59,17 +93,40 @@ Unity WebGL builds often use Brotli (`.br`) or Gzip (`.gz`) compression. A local
 
 If those headers are missing, the browser may fail to load the build even when the files are present.
 
-## Current Status And Roadmap
+## Roadmap
 
-Current status:
+### v1.1
 
-- Browser integration demo is functional.
-- WebGL bridge covers alerts, clipboard, fullscreen, callback, download, and diagnostics.
-- Documentation is ready for portfolio review.
+- File Upload
+- Drag & Drop
+- Browser Local Storage
 
-Roadmap:
+### v1.2
 
-- Add a more polished UI layout for each demo module.
-- Add visible success/failure states for browser API calls.
-- Add a deployed demo page with correct compression headers.
-- Add screenshots or a short video walkthrough.
+- IndexedDB
+- Browser Notifications
+- Clipboard Images
+
+### v2.0
+
+- Complete Browser API Laboratory
+- Production-grade architecture
+- Interactive Browser API catalog
+
+## Suggested GitHub Topics
+
+```text
+unity
+unity3d
+webgl
+javascript
+browser-api
+csharp
+gamedev
+portfolio
+wasm
+```
+
+## License
+
+MIT License
